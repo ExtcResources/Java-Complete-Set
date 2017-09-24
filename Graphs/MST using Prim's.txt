@@ -1,0 +1,57 @@
+Minimum spanning tree using Prim's algorithm and having a graph as matrix
+Time Complexity: O(v*v)
+
+
+CODE: 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class GFG {
+ public static void main (String[] args) {
+ int graph[][] = new int[][] {{0, 2, 0, 6, 0},
+                                    {2, 0, 3, 8, 5},
+                                    {0, 3, 0, 0, 7},
+                                    {6, 8, 0, 0, 9},
+                                    {0, 5, 7, 9, 0},
+                                   };
+    primMST(graph);                                   
+ }
+ public static void primMST(int [][]graph){
+     int [] parent= new int [5];
+     boolean [] mstSet=new boolean [5];
+     int [] key= new int [5];
+     Arrays.fill(mstSet,false);
+     Arrays.fill(key,Integer.MAX_VALUE);
+     key[0]=0;parent[0]=-1;
+     for(int i=0;i<4;i++){
+         int u=minKey(key,mstSet);
+         mstSet[u]=true;
+         for(int v=0;v<5;v++){
+             if(graph[u][v]<key[v] && graph[u][v]!=0 && mstSet[v]==false){
+                 parent[v]=u;
+                 key[v]=graph[u][v];
+             }
+         }
+      }
+      printMST(parent,5,graph);
+ }
+ public static int minKey(int [] key, boolean[] mstSet){
+     int min=Integer.MAX_VALUE;int min_index=0;
+     for(int v=0;v<5;v++){
+         if(mstSet[v]==false && key[v]<min){
+             min=key[v];
+             min_index=v;
+         }
+     }
+     return min_index;
+ }
+ public static void printMST(int [] parent, int V,int [][]graph){
+     System.out.println("Edge"+"    "+"Weight");
+     for(int i=1;i<V;i++){
+         System.out.println(parent[i]+" "+"-"+i+"       "+graph[i][parent[i]]);
+     }
+ }
+
+}
