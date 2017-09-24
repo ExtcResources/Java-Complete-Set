@@ -1,0 +1,120 @@
+Question: Inorder Traversal
+
+Algorithm: 
+Left-Root-Right
+
+CODE:
+class Node {
+    int data;
+    Node left, right;
+   Node(int item)    {
+        data = item;
+        left = right = null;
+    }
+} 
+class Solution
+{
+   /* Prints preorder traversal of Binary Tree.  In output
+      all keys should be separated by space. For example
+      preorder traversal of below tree should be "10 20 30"
+         10
+       /      \ 
+    20       30 */
+    void inOrder(Node root)
+    {
+       // Your code goes here
+       if(root==null){return;}
+       inOrder(root.left);
+       System.out.print(root.data+" ");
+       inOrder(root.right);
+    }
+
+}
+
+Question: PreOrder traversal
+
+Algorithm: Root-Left-Right
+
+CODE:
+class Node {
+    int data;
+    Node left, right;
+   Node(int item)    {
+        data = item;
+        left = right = null;
+    }
+} 
+class Solution
+{
+   /* Prints preorder traversal of Binary Tree.  In output
+      all keys should be separated by space. For example
+      preorder traversal of below tree should be "10 20 30"
+         10
+       /      \ 
+    20       30 */
+    void preorder(Node root)
+    {
+       // Your code goes here
+       if(root==null){return;}
+       System.out.print(root.data+" ");
+       preorder(root.left);
+       preorder(root.right);
+    }
+
+}
+
+Question: PostOrder Traversal
+
+Algorithm: Left-Right-Root
+
+CODE:
+class Node {
+    int data;
+    Node left, right;
+   Node(int item)    {
+        data = item;
+        left = right = null;
+    }
+} 
+class Solution
+{
+    void postOrder(Node root)
+    {
+       if(root==null){return;}
+       postOrder(root.left);
+       postOrder(root.right);
+       System.out.print(root.data+" ");
+    }
+
+}
+Question: Level Order Traversal
+
+Algorithm: 
+1.Create an empty queue
+2.tempNode=root
+3.Loop while tempNode is not null
+3.1.Print tempNode.data
+3.2.Enqueue all children of tempNode
+3.3.Dequeue a node and assign it to tempNode
+
+CODE:
+class Solution
+{
+    void levelOrder(Node node) 
+    {
+        // Your code here
+        Queue <Node> queue= new LinkedList<Node>();
+        queue.add(node);
+        while(!queue.isEmpty()){
+            Node tempNode= queue.poll();
+            System.out.print(tempNode.data+" ");
+            if(tempNode.left!=null){
+                queue.add(tempNode.left);
+            }
+            if(tempNode.right!=null){
+                queue.add(tempNode.right);
+            }
+        }
+    }
+
+}
