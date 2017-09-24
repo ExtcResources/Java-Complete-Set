@@ -1,0 +1,93 @@
+Company: MakeMyTrip, FreeCharge, FactSet, CouponDunia, Cadence, Amazon, VMWare, Teradata, Synopsys, Snapdeal, Monotype
+The height of a binary tree is the number of edges between the tree's root and its furthest leaf. This means that a tree containing a single node has a height of tree.
+Complete the getHeight function provided in your editor so that it returns the height of a binary tree. This function has a parameter, , which is a pointer to the root node of a binary tree. 
+Note -The Height of binary tree with single node is taken as zero.
+Input Format
+You do not need to read any input from stdin. Our grader will pass the root node of a binary tree to your getHeightfunction.
+Output Format
+Your function should return a single integer denoting the height of the binary tree.
+Sample Input
+BST.png
+Note: A binary search tree is a binary tree in which the value of each parent node's left child is less than the value the parent node, and the value of the parent node is less than the value of its right child.
+Sample Output
+3
+
+
+CODE:
+import java.util.*;
+import java.io.*;
+class Node {
+    Node left;
+    Node right;
+    int data;
+    
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+
+class Solution {
+/*
+    class Node 
+     int data;
+     Node left;
+     Node right;
+ */
+ static int height(Node root) {
+       // Write your code here.
+        //base case
+        if(root==null){return 0;}
+        //queue for level order traversal
+        Queue <Node>q=new LinkedList<Node>();
+        //enqueue root and initialise height
+        q.add(root);
+        int h=0;
+        while(true){
+            // nodeCount (queue size) indicates number of nodes
+            // at current level.
+            int nodeCount=q.size();
+            if(nodeCount==0){return (h-1);}
+            h++;
+            // Dequeue all nodes of current level and Enqueue all
+            // nodes of next level
+            while(nodeCount>0){
+                Node newNode=q.poll();
+                if(newNode.left!=null){q.add(newNode.left);}
+                if(newNode.right!=null){q.add(newNode.right);}
+                nodeCount--;
+            }
+        }
+    }
+public static Node insert(Node root, int data) {
+        if(root == null){
+            return new Node(data);
+        }
+        else {
+            Node cur;
+            if(data <= root.data){
+                cur = insert(root.left, data);
+                root.left = cur;
+            }
+            else{
+                cur = insert(root.right, data);
+                root.right = cur;
+            }
+            return root;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
+        Node root = null;
+        while(t-- > 0){
+            int data = scan.nextInt();
+            root = insert(root, data);
+        }
+        scan.close();
+        int height = height(root);
+        System.out.println(height);
+    } 
+}
+EXECUTION TIME: 0.53s
