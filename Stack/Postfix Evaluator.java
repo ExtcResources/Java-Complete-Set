@@ -1,4 +1,4 @@
-Given a postfix expression, the task is to evaluate the expression and print the final value.
+/*Given a postfix expression, the task is to evaluate the expression and print the final value.
 Input:
 The first line of input will contains an integer T denoting the no of test cases . Then T test cases follow. Each test case contains an postfix expression.
 
@@ -35,9 +35,9 @@ Let the given expression be “2 10   + 96 -/“. We scan all elements one by one.
 6) Scan ‘-‘, it’s an operator, pop two operands from stack, apply the – operator on operands, we get 9-6 which results in 3. We push the result ‘3’ to stack. Stack now becomes ‘12 3’.
 7) Scan ‘/‘, it’s an operator, pop two operands from stack, apply the / operator on operands, we get 12/3 which results in 4. We push the result ‘3’ to stack. Stack now becomes ‘4’.
 
-8) There are no more elements to scan, we return the top element from stack (which is the only element left in stack).
+8) There are no more elements to scan, we return the top element from stack (which is the only element left in stack).*/
 
-CODE:
+//CODE:
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -100,4 +100,5 @@ class Solution {
         }
     }
 }
-Execution Time: 0.08 secs
+
+//Execution Time: 0.08 secs

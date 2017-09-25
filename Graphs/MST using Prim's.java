@@ -1,8 +1,8 @@
-Minimum spanning tree using Prim's algorithm and having a graph as matrix
-Time Complexity: O(v*v)
+//Minimum spanning tree using Prim's algorithm and having a graph as matrix
+//Time Complexity: O(v*v)
 
 
-CODE: 
+//CODE: 
 import java.util.*;
 import java.lang.*;
 import java.io.*;
