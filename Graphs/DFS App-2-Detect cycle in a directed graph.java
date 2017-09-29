@@ -1,4 +1,4 @@
-class GfG
+class Solution
 {
     public boolean hasCycle(int v,LinkedList<Integer>[] alist,boolean[] visited,boolean[] explored) 
      {
